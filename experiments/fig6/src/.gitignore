@@ -1,0 +1,10 @@
+# Ignore generated files
+*
+
+# Keep source files
+!*.c
+!*.h
+!*.inc
+
+# Keep this file
+!.gitignore

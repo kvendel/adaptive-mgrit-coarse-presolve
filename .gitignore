@@ -53,3 +53,32 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# C build products
+*.o
+*.so
+*.a
+
+# SLURM output
+slurm-*.out
+slurm-*.err
+
+# Logs and temporary files
+*.log
+*.tmp
+*~
+core
+core.*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+

@@ -3,8 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=4
 #SBATCH --time=00:01:00
-#SBATCH --output=run_all.out
-#SBATCH --error=run_all.err
+#SBATCH --output=scripts/run_all.out
+#SBATCH --error=scripts/run_all.err
 
 srun ./src/lin-original_IE -ntime 300 -eps 1e-7 -mc 16 -mi 30 -tol 1e-15
 srun ./src/lin-original_BS -ntime 60 -eps 1e-9 -mc 16 -mi 30 -tol 1e-15

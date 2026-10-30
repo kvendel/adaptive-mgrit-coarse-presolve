@@ -15,11 +15,11 @@ eps=$(awk -v i="$SLURM_ARRAY_TASK_ID" \
 eps0=$(awk -v eps="$eps" \
    'BEGIN {printf "%.16e", 100.0*eps}')
 
-srun ../src/vdp-hermite_harmonic_I -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
-srun -n 1 ../src/vdp-sequential_I -tol "$eps"
-srun ../src/vdp-hermite_harmonic_exp -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
-srun -n 1 ../src/vdp-sequential_exp -tol "$eps"
-srun ../src/vdp-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
-srun -n 1 ../src/vdp-sequential -tol "$eps"
-srun ../src/vdp-hermite_harmonic_PID -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
-srun -n 1 ../src/vdp-sequential_PID -tol "$eps"
+srun ./src/vdp-hermite_harmonic_I -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
+srun -n 1 ./src/vdp-sequential_I -tol "$eps"
+srun ./src/vdp-hermite_harmonic_exp -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
+srun -n 1 ./src/vdp-sequential_exp -tol "$eps"
+srun ./src/vdp-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
+srun -n 1 ./src/vdp-sequential -tol "$eps"
+srun ./src/vdp-hermite_harmonic_PID -eps0 "$eps0" -eps "$eps" -mc 128 -mi 30 -tol 1e-9
+srun -n 1 ./src/vdp-sequential_PID -tol "$eps"

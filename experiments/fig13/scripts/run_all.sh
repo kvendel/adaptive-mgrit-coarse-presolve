@@ -9,6 +9,8 @@
 #SBATCH --output=r_error.out
 #SBATCH --error=r_error.err
 
+
+
 set -euo pipefail
 
 cd "$SLURM_SUBMIT_DIR"
@@ -26,6 +28,6 @@ r="${r_values[$SLURM_ARRAY_TASK_ID]}"
 eps0=$(awk -v eps="$eps" -v r="$r" \
     'BEGIN {printf "%.16e", eps*r*r}')
 
-srun -n 4 ../src/lin-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 8 -mi 30 -tol 1e-9
-srun -n 4 ../src/LV-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 64 -mi 30 -tol 1e-9
-srun -n 4 ../src/vdp-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 64 -mi 30 -tol 1e-9
+srun -n 4 ./src/lin-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 8 -mi 30 -tol 1e-9
+srun -n 4 ./src/LV-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 64 -mi 30 -tol 1e-9
+srun -n 4 ./src/vdp-hermite_harmonic -eps0 "$eps0" -eps "$eps" -mc 64 -mi 30 -tol 1e-9

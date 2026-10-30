@@ -7,6 +7,8 @@
 #SBATCH --output=/dev/null
 #SBATCH --error=/dev/null
 
+
+
 # eps = 10^(-11 + i/50)
 eps=$(awk -v i="$SLURM_ARRAY_TASK_ID" \
    'BEGIN {printf "%.16e", 10^(-11.0+i/50.0)}')
@@ -24,7 +26,7 @@ nt=$(awk -v eps0="$eps0" \
         }
         printf "%d", nt
     }')
-srun ../src/LV-original_BS  -ntime "$nt" -eps "$eps" -mc 64 -mi 30 -tol 1e-15
-srun ../src/LV-article_BS  -ntime "$nt" -eps "$eps" -mc 64 -mi 30 -tol 1e-15
-srun ../src/LV-BS -eps0 "$eps0" -eps "$eps" -mc 64 -mi 30 -tol 1e-9
-srun -n 1 ../src/LV-sequential_BS -tol "$eps"
+srun ./src/LV-original_BS  -ntime "$nt" -eps "$eps" -mc 64 -mi 30 -tol 1e-15
+srun ./src/LV-article_BS  -ntime "$nt" -eps "$eps" -mc 64 -mi 30 -tol 1e-15
+srun ./src/LV-BS -eps0 "$eps0" -eps "$eps" -mc 64 -mi 30 -tol 1e-9
+srun -n 1 ./src/LV-sequential_BS -tol "$eps"

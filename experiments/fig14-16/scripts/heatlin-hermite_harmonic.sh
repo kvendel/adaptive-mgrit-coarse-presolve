@@ -7,13 +7,12 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=128G
 #SBATCH --time=1-00:00:00
-#SBATCH --output=heatlin-hermite_harmonic-%j.out
-#SBATCH --error=heatlin-hermite_harmonic-%j.err
+#SBATCH --output=scripts/heatlin-hermite_harmonic-%j.out
+#SBATCH --error=scripts/heatlin-hermite_harmonic-%j.err
 
 set -euo pipefail
-cd "$SLURM_SUBMIT_DIR"
 
-EXECUTABLE="./heatlin-hermite_harmonic"
+EXECUTABLE="./src/heatlin-hermite_harmonic"
 EPS="1e-9"
 NX="1025"
 MGRIT_TOL="1e-9"

@@ -11,17 +11,26 @@ CC ?= cc
 MPICC ?= cc
 MPICXX ?= CC
 
+XBRAID_DIR := xbraid
+XBRAID_BRAID_DIR := $(XBRAID_DIR)/braid
+XBRAID_LIB := $(XBRAID_BRAID_DIR)/libbraid.a
+
 .PHONY: all xbraid experiments $(FIGURE_TARGETS) list clean clean-experiments clean-xbraid
 
-all: xbraid experiments
+all: experiments
 
-xbraid:
-	@echo "Building XBraid with CC=$(CC), MPICC=$(MPICC), MPICXX=$(MPICXX)..."
-	$(MAKE) -C xbraid CC=$(CC) MPICC=$(MPICC) MPICXX=$(MPICXX)
+# User-facing target for building only the XBraid library.
+xbraid: $(XBRAID_LIB)
+
+# Build only libbraid.a, not the XBraid examples.
+$(XBRAID_LIB):
+	@echo "Building the XBraid library with CC=$(CC), MPICC=$(MPICC), MPICXX=$(MPICXX)..."
+	$(MAKE) -C $(XBRAID_BRAID_DIR) CC=$(CC) MPICC=$(MPICC) MPICXX=$(MPICXX)
 
 experiments: $(FIGURE_TARGETS)
 
-$(FIGURE_TARGETS): xbraid
+# Every experiment requires libbraid.a, but the library is built only when needed.
+$(FIGURE_TARGETS): $(XBRAID_LIB)
 	@echo "Building programs for $@..."
 	$(MAKE) -C experiments/$@ CC=$(CC) MPICC=$(MPICC) MPICXX=$(MPICXX)
 
@@ -41,5 +50,5 @@ clean-experiments:
 	done
 
 clean-xbraid:
-	@echo "Cleaning XBraid..."
-	$(MAKE) -C xbraid clean
+	@echo "Cleaning the XBraid library..."
+	$(MAKE) -C $(XBRAID_BRAID_DIR) clean

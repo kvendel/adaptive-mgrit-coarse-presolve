@@ -11,10 +11,9 @@
 #SBATCH --error=heatlin-article-original-%j.err
 
 set -euo pipefail
-cd "$SLURM_SUBMIT_DIR"
 
-ARTICLE_EXECUTABLE="./heatlin-article"
-ORIGINAL_EXECUTABLE="./heatlin-original"
+ARTICLE_EXECUTABLE="./src/heatlin-article"
+ORIGINAL_EXECUTABLE="./src/heatlin-original"
 
 NTIME="500"
 EPS="1e-9"

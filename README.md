@@ -23,11 +23,9 @@ Each experiment directory contains the applicable subset of:
 
 This repository contains the source codes, execution scripts, numerical results, and plotting routines for the new computational experiments reported in Figures 6-16.
 
-Figures 2-4 revisit numerical results and refinement strategies from the authors' earlier work. The corresponding reproducibility material is available at:
+Figures 2-4 revisit numerical results and refinement strategies from the authors' earlier work. The corresponding material is available at:
 
 https://github.com/kvendel/Computational-stability-in-adaptive-parallel-in-time-Runge-Kutta-methods
-
-Figures 1 and 5 are schematic or analytical illustrations and do not require execution of the C experiment programs.
 
 ## Clone the repository
 

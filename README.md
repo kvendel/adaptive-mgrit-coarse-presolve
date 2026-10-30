@@ -7,7 +7,7 @@ The repository is organized so that the numerical data used in the manuscript fi
 ## Repository contents
 
 - `xbraid/`: XBraid dependency, included as a Git submodule and pinned to a specific commit.
-- `experiments/fig7/` through `experiments/fig14-16/`: files associated with Figures 7-(14-16) of the manuscript.
+- `experiments/fig6/` through `experiments/fig14-16/`: files associated with Figures 6-16 of the manuscript.
   - `src/`: C source files.
   - `scripts/`: SLURM batch and execution scripts used on Komondor.
   - `results/`: numerical output files used by the plotting code.
